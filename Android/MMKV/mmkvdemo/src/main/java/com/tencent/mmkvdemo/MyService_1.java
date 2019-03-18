@@ -57,7 +57,7 @@ public class MyService_1 extends BenchMarkBaseService implements ServiceConnecti
                 }
             }
         }
-        return super.onStartCommand(intent, flags, startId);
+        return START_NOT_STICKY;//super.onStartCommand(intent, flags, startId);
     }
 
     @Override
@@ -80,7 +80,7 @@ public class MyService_1 extends BenchMarkBaseService implements ServiceConnecti
             if (parcelableMMKV != null) {
                 m_ashmemMMKV = parcelableMMKV.toMMKV();
                 if (m_ashmemMMKV != null) {
-                    Log.i("MMKV", "ashmem bool: " + m_ashmemMMKV.decodeBool("bool"));
+                    Log.i("MMKV", "ashmem int: " + m_ashmemMMKV.decodeInt("testAshmem"));
                 }
             }
         } catch (RemoteException e) {
