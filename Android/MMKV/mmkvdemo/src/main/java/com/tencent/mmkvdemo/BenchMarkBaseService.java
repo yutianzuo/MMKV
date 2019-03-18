@@ -312,7 +312,7 @@ public abstract class BenchMarkBaseService extends Service {
             final String id = "tetAshmemMMKV";
             m_ashmemMMKV = MMKV.mmkvWithAshmemID(BenchMarkBaseService.this, id, AshmemMMKV_Size,
                                                  MMKV.MULTI_PROCESS_MODE, CryptKey);
-            m_ashmemMMKV.encode("bool", true);
+            m_ashmemMMKV.encode("testAshmem", 123456);
         }
 
         public ParcelableMMKV GetAshmemMMKV() {

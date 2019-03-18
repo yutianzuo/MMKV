@@ -120,6 +120,13 @@ public class MainActivity extends AppCompatActivity implements MMKVHandler {
             }
         });
 
+        final Button buttonAshmem = findViewById(R.id.btnAshmem);
+        buttonAshmem.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                prepareInterProcessAshmem();
+            }
+        });
+
         String otherDir = getFilesDir().getAbsolutePath() + "/mmkv_3";
         MMKV kv = testMMKV("test/AES", "Tencent MMKV", false, otherDir);
         if (kv != null) {
@@ -303,8 +310,12 @@ public class MainActivity extends AppCompatActivity implements MMKVHandler {
         MMKV kv = MMKV.mmkvWithAshmemID(this, "testAshmem", MMKV.pageSize(),
                                         MMKV.SINGLE_PROCESS_MODE, cryptKey);
 
+        boolean btest = kv.getBoolean("bool", false);
+
         kv.encode("bool", true);
         Log.i("MMKV", "bool: " + kv.decodeBool("bool"));
+
+        btest = kv.getBoolean("bool", false);
 
         kv.encode("int", Integer.MIN_VALUE);
         Log.i("MMKV", "int: " + kv.decodeInt("int"));
@@ -329,7 +340,7 @@ public class MainActivity extends AppCompatActivity implements MMKVHandler {
         Log.i("MMKV", "count = " + kv.count() + ", totalSize = " + kv.totalSize());
         Log.i("MMKV", "containsKey[string]: " + kv.containsKey("string"));
 
-        kv.removeValueForKey("bool");
+//        kv.removeValueForKey("bool");
         Log.i("MMKV", "bool: " + kv.decodeBool("bool"));
         kv.removeValuesForKeys(new String[] {"int", "long"});
         //kv.clearAll();

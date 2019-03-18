@@ -72,4 +72,15 @@
         app:layout_constraintTop_toBottomOf="@+id/button_write_int"
         tools:text="Inter Read Int" />
 
+
+    <Button
+        android:id="@+id/btnAshmem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Test Ashmem"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_read_string" />
+
 </android.support.constraint.ConstraintLayout>
